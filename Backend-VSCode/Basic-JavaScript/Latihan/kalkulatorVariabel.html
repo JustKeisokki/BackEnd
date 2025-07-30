@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Kalkulator Variabel (x=10, y=5)</h2>
+    <button onclick="calculate('+')">+</button>
+    <button onclick="calculate('-')">-</button>
+    <button onclick="calculate('*')">*</button>
+    <button onclick="calculate('/')">/</button>
+
+    <p id="result"></p>
+    <script>
+        let x = 10;
+        let y = 5;
+        function calculate(operator) {
+            let result;
+            switch (operator) {
+                case '+':
+                    result = x + y;
+                    break;
+                case '-':
+                    result = x - y;
+                    break;
+                case '*':
+                    result = x * y;
+                    break;
+                case '/':
+                    if (y === 0) {
+                        alert("Tidak bisa membagi dengan nol.");
+                        return;
+                    }
+                    result = x / y;
+                    break;
+                default:
+                    alert("Operator tidak valid.");
+                    return;
+            }
+            document.getElementById("result").innerHTML = "Hasil: " + result;
+        }
+    </script>
+</body>
+</html>

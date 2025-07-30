@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+<script>
+    // Variabel global untuk menyimpan operator yang dipilih
+    let selectedOperator = '+'; // Default operator saat pertama kali dimuat
+
+    // Fungsi untuk mengatur operator yang dipilih
+    function setOperator(operator, button) {
+        selectedOperator = operator;
+
+        // Hapus kelas 'selected' dari semua tombol operator
+        const buttons = document.querySelectorAll('.operator-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        // Tambahkan kelas 'selected' ke tombol yang baru saja ditekan
+        button.classList.add('selected');
+    }
+
+    function calculate() {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        let result;
+
+        if (isNaN(num1) || isNaN(num2)) {
+            alert("Silakan masukkan angka yang valid.");
+            return;
+        }
+
+        // Gunakan operator yang disimpan dalam variabel selectedOperator
+        switch (selectedOperator) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                if (num2 === 0) {
+                    alert("Tidak bisa membagi dengan nol.");
+                    return;
+                }
+                result = num1 / num2;
+                break;
+            default:
+                alert("Silakan pilih operator yang valid.");
+                return;
+        }
+
+        document.getElementById("result").innerHTML = "Hasil: " + result;
+    }
+
+    function clearFields() {
+        document.getElementById("num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("result").innerHTML = "";
+        selectedOperator = '+'; // Reset operator ke default
+
+        // Hapus penyorotan tombol saat membersihkan
+        const buttons = document.querySelectorAll('.operator-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        // Opsional: sorot ulang tombol default '+'
+        document.querySelector('.operator-btn[onclick="setOperator(\'+\', this)"]').classList.add('selected');
+    }
+
+    // Panggil setOperator untuk menyorot tombol '+' secara default saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelector('.operator-btn[onclick="setOperator(\'+\', this)"]').click();
+    });
+</script>
+<body>
+    <h1>Kalkulator Sederhana</h1>
+    <p>Masukkan dua angka dan pilih operator:</p>
+
+    <input type="number" id="num1" placeholder="Angka Pertama">
+    <input type="number" id="num2" placeholder="Angka Kedua">
+
+    <p>
+        <button class="operator-btn" onclick="setOperator('+', this)">+</button>
+        <button class="operator-btn" onclick="setOperator('-', this)">-</button>
+        <button class="operator-btn" onclick="setOperator('*', this)">*</button>
+        <button class="operator-btn" onclick="setOperator('/', this)">/</button>
+    </p>
+
+    <button onclick="calculate()">Hitung</button>
+    <button onclick="clearFields()">Clear</button>
+
+    <h2 id="result"></h2>
+</body>
+</html>

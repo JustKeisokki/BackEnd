@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    button {
+        margin: 5px;
+        padding: 10px;
+        background-color: #1d5dbc;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #155a8c;
+    }
+    .clear-button {
+        background-color: #db1d1d;
+    }
+
+</style>
+<script>
+    function showSchedule(day) {
+        var schedule = {
+            senin: "Tahfidz, ED, BK, PKK, RPL",
+            selasa: "Tahfidz, ED, PJOK, RPL",
+            rabu: "Tahfidz, ED, TKJ, RPL",
+            kamis: "Tahfidz, ED, AI, PAI, Bahasa Jawa, Bahasa Indonesia",
+            jumat: "ED, Bahasa Inggris, PKN, Tahfidz, Sejarah, Matematika"
+        };
+        document.getElementById("schedule").innerHTML = schedule[day];
+    }
+    function clearSchedule() {
+        document.getElementById("schedule").innerHTML = "";
+    }
+
+</script>
+<body>
+    <h1>Jadwal Pelajaran</h1>
+    <p>Pilih Jadwal hari:</p>
+
+    <button onclick="showSchedule('senin')">Senin</button>
+    <button onclick="showSchedule('selasa')">Selasa</button>
+    <button onclick="showSchedule('rabu')">Rabu</button>
+    <button onclick="showSchedule('kamis')">Kamis</button>
+    <button onclick="showSchedule('jumat')">Jumat</button>
+    <button onclick="clearSchedule()" class="clear-button">Clear</button>
+
+    <h2>Jadwal:</h2>
+    <p id="schedule"></p>
+
+</body>
+</html>

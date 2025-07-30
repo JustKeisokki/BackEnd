@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+    <style>
+        .buttonLove {
+            background-color: #bc1d5dc2;
+            border: none;
+            color: white;
+        }
+
+        .buttonBack {
+            background-color: #1d5dbc;
+            border: none;
+            color: white;
+        }
+    </style>
+
+    <script>
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Kamu <3";
+        }
+        function backFunction() {
+            document.getElementById("demo").innerHTML = "Keisokki Ganteng";
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>Demo button change paragraph use JavaScript and HTML</h2>
+
+    <p id="demo">Keisokki Ganteng</p>
+
+    <button type="button" onclick="myFunction()" class="buttonLove">Love</button>
+    <p><button type="button" onclick="backFunction()" class="buttonBack">Back</button></p>
+
+</body>
+
+</html>
